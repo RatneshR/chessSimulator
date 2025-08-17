@@ -1,43 +1,41 @@
 package com.rr.chess.model;
 
-import com.rr.chess.util.BoardUtils;
-
 import java.util.Objects;
 
-public class Position {
-    public final int row;
-    public final int col;
+public final class Position {
+    private final char file;
+    private final int rank;
 
-    public Position(int row, int col) {
-        if(!BoardUtils.isValid(row, col)) {
-            throw new IllegalArgumentException("Invalid position: (" + row + ", " + col + ")");
-        }
-        this.row = row;
-        this.col = col;
+    public Position(char file, int rank) {
+        this.file = Character.toUpperCase(file);
+        this.rank = rank;
     }
 
-    /**
-     * Returns algebraic notation like "E2".
-     */
-    public String toCell() {
-        return BoardUtils.toCell(row, col);
+    public char getFile() {
+        return file;
+    }
+
+    public int getRank() {
+        return rank;
     }
 
     @Override
     public String toString() {
-        return "(" + row + ", " + col + ") - " + toCell();
+        return "" + file + rank;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if(this == o) return true;
-        if(!(o instanceof Position)) return false;
-        Position other = (Position) o;
-        return this.row == other.row && this.col == other.col;
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+
+        if(!(obj instanceof Position)) return false;
+
+        Position position = (Position) obj;
+        return file == position.file && rank == position.rank;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(row, col);
+        return Objects.hash(file, rank);
     }
 }
