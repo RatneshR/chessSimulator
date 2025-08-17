@@ -6,6 +6,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Scanner;
 
+/**
+ * ChessSimulatorApplication is the entry point for the Chess Simulator application.
+ * It initializes the Spring Boot application and provides a command-line interface
+ * for user input to simulate chess piece movements.
+ *
+ * Key Features:
+ * - Uses CommandLineRunner to accept console input.
+- Parses input like "King D5" and delegates to MovementService.
+- Prints all valid moves or error messages
+*/
+
 @SpringBootApplication
 public class ChessSimulatorApplication implements CommandLineRunner {
 
