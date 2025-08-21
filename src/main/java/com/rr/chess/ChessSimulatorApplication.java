@@ -14,7 +14,6 @@ import java.util.Scanner;
  * ChessSimulatorApplication is the entry point for the Chess Simulator application.
  * It initializes the Spring Boot application and provides a command-line interface
  * for user input to simulate chess piece movements.
- *
  * Key Features:
  * - Uses CommandLineRunner to accept console input.
 - Parses input like "King D5" and delegates to MovementService.
@@ -39,7 +38,7 @@ public class ChessSimulatorApplication implements CommandLineRunner {
 		System.out.println("Enter piece and position (eg. King E5): ");
 		String input = scanner.nextLine().trim();
 
-		String parts[] = input.split(" ");
+		String[] parts = input.split(" ");
 		if (parts.length != 2) {
 			System.out.println("Invalid input format. Please use 'Piece Position' (e.g., 'King D5').");
 			scanner.close();

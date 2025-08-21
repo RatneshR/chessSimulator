@@ -1,10 +1,6 @@
 package com.rr.chess.service;
 
-import com.rr.chess.model.PieceType;
 import com.rr.chess.model.Piece;
-import com.rr.chess.model.King;
-import com.rr.chess.model.Queen;
-import com.rr.chess.model.Pawn;
 import com.rr.chess.model.Position;
 
 import com.rr.chess.util.BoardUtils;
@@ -39,9 +35,9 @@ public class MovementService {
             for(int dr = -1; dr <= 1; dr++) {
                 if(df == 0 && dr == 0) continue; // Skip the current position
 
-                char newFile = (char) (start.getFile() + df);
+                char newFile = (char) (start.file() + df);
 
-                int newRank = start.getRank() + dr;
+                int newRank = start.rank() + dr;
 
                 if(BoardUtils.isWithinBounds(newFile, newRank)) {
                     moves.add(new Position(newFile, newRank));
@@ -69,10 +65,10 @@ public class MovementService {
         List<Position> moves = new ArrayList<>();
 
         // Pawns can only move forward one square
-        int newRank = start.getRank() + 1;
+        int newRank = start.rank() + 1;
 
-        if(BoardUtils.isWithinBounds(start.getFile(), start.getRank())){
-            moves.add(new Position(start.getFile(), newRank));
+        if(BoardUtils.isWithinBounds(start.file(), start.rank())){
+            moves.add(new Position(start.file(), newRank));
         }
         return moves;
     }

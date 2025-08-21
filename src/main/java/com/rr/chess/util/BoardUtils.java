@@ -10,8 +10,8 @@ public final class BoardUtils {
 
     public static boolean isValidPosition(Position position) {
         return position != null &&
-                position.getFile() >= 'A' && position.getFile() <= 'H' &&
-                position.getRank() >= 1 && position.getRank() <= 8;
+                position.file() >= 'A' && position.file() <= 'H' &&
+                position.rank() >= 1 && position.rank() <= 8;
     }
 
     public static boolean isWithinBounds(char file, int rank) {
@@ -20,8 +20,8 @@ public final class BoardUtils {
 
     public static List<Position> generateLinearMoves(Position start, int fileStep, int rankStep) {
         List<Position> moves = new ArrayList<>();
-        char file = start.getFile();
-        int rank = start.getRank();
+        char file = start.file();
+        int rank = start.rank();
 
         while(true) {
             file += fileStep;
