@@ -27,6 +27,9 @@ public class MovementServiceTest {
         Position pos = new Position('A', 1);
         List<Position> moves = service.getValidMoves(queen, pos);
         assertTrue(moves.size() > 0);
+
+        assertTrue(moves.contains(new Position('G', 1)));
+//        , new Position('F',1), E1, D1, C1, B1, A1, H2, H3, H4, H5, H6, H7, H8, G2, F3, E4, D5, C6, B7, A8]);t
     }
 
     @Test
@@ -36,5 +39,21 @@ public class MovementServiceTest {
         List<Position> moves = service.getValidMoves(pawn, pos);
         assertEquals(1, moves.size());
 //        assertEquals(new Position('})
+    }
+
+    @Test
+    void testInvalidPosition() {
+        Pawn pawn = new Pawn();
+        Position pos = new Position('A', 0);
+        List<Position> moves = service.getValidMoves(pawn, pos);
+        assertTrue(moves.size() ==0);
+    }
+
+    @Test
+    void testBishopMovesFromCorner() {
+        Bishop bishop = new Bishop();
+        Position pos = new Position('A', 1);
+        List<Position> moves = service.getValidMoves(bishop, pos);
+        assertTrue(moves.size() > 0);
     }
 }

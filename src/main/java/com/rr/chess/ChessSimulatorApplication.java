@@ -29,7 +29,7 @@ public class ChessSimulatorApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) {
+	public void run(String... args) throws Exception {
 		// This method can be used to execute code after the application has started
 		System.out.println("Chess Simulator Application has started successfully!");
 
@@ -53,6 +53,7 @@ public class ChessSimulatorApplication implements CommandLineRunner {
 			case "KING" -> new King();
 			case "QUEEN" -> new Queen();
 			case "PAWN" -> new Pawn();
+			case "BISHOP" -> new Bishop();
 			default -> null;
 		};
 
@@ -61,6 +62,10 @@ public class ChessSimulatorApplication implements CommandLineRunner {
 			scanner.close();
 			return;
 		}
+
+//		try {
+//
+//		}
 
 		char file = positionStr.charAt(0);
 		int rank = Character.getNumericValue(positionStr.charAt(1));

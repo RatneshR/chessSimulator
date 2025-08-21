@@ -28,6 +28,7 @@ public class MovementService {
                 yield getQueenMoves(position);
             case PAWN:
                 yield  getPawnMoves(position);
+            case BISHOP: yield getBishopMoves(position);
         };
     }
 
@@ -73,6 +74,20 @@ public class MovementService {
         if(BoardUtils.isWithinBounds(start.getFile(), start.getRank())){
             moves.add(new Position(start.getFile(), newRank));
         }
+        return moves;
+    }
+
+    /*
+    *
+    * */
+    private List<Position> getBishopMoves(Position start) {
+        List<Position> moves = new ArrayList<>();
+
+        moves.addAll(BoardUtils.generateLinearMoves(start, 1, 1)); // Up
+        moves.addAll(BoardUtils.generateLinearMoves(start, -1, -1)); // Down
+        moves.addAll(BoardUtils.generateLinearMoves(start, 1, -1)); // Down
+        moves.addAll(BoardUtils.generateLinearMoves(start, -1, 1)); // Up
+
         return moves;
     }
 }
